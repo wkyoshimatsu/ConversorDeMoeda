@@ -12,7 +12,10 @@ public class Application {
     public static final String API_KEY= System.getenv("API_KEY");
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        System.out.println("""
+        Scanner scanner = new Scanner(System.in);
+        int option = 0;
+        while (option < 1 || option > 7){
+            System.out.println("""
                 ***************************************************
                       Seja bem-vindo(a) ao Conversor de Moeda
                 
@@ -23,13 +26,46 @@ public class Application {
                 5) Real (BRL)             ->  Iene (JPY)
                 6) Iene (JPY)             ->  Real (BRL)
                 7) Sair
+                
                 Selecione uma opção válida:
                 ***************************************************""");
+            option = scanner.nextInt();
+        }
 
-        Scanner scanner =
+        String baseCurrency = "";
+        String targetCurrency = "";
+
+        switch (option){
+            case 1:
+                baseCurrency = "BRL";
+                targetCurrency = "USD";
+                break;
+            case 2:
+                baseCurrency = "USD";
+                targetCurrency = "BRL";
+                break;
+            case 3:
+                baseCurrency = "BRL";
+                targetCurrency = "ARS";
+                break;
+            case 4:
+                baseCurrency = "ARS";
+                targetCurrency = "BRL";
+                break;
+            case 5:
+                baseCurrency = "BRL";
+                targetCurrency = "JPY";
+                break;
+            case 6:
+                baseCurrency = "JPY";
+                targetCurrency = "BRL";
+                break;
+            case 7:
+
+        }
 
         // Setting URL
-        String url_str = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/latest/USD";
+        String url_str = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/pair/" + baseCurrency + "/" + targetCurrency;
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url_str)).build();
@@ -38,10 +74,6 @@ public class Application {
         System.out.println(response.body());
 
         /*
-
-
-
-
         // Making Request
         URL url = new URL(url_str);
         HttpURLConnection request = (HttpURLConnection) url.openConnection();
@@ -54,7 +86,6 @@ public class Application {
 
         // Accessing object
         String req_result = jsonobj.get("result").getAsString();
-
         */
     }
 }
