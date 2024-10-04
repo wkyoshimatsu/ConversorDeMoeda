@@ -1,20 +1,20 @@
 package me.wky.conversorDeMoeda;
 
 import com.google.gson.Gson;
-import me.wky.conversorDeMoeda.models.ConversionExchangeRate;
+import me.wky.conversorDeMoeda.models.*;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Application {
 
     public static final String API_KEY= System.getenv("API_KEY");
-
-
 
     public static int exchangeSelector() {
         Scanner scanner = new Scanner(System.in);
@@ -49,6 +49,16 @@ public class Application {
             valueToConvert = scanner.nextDouble();
         }
         return valueToConvert;
+    }
+
+    public static HttpResponse<String> getHttpResponseByUrl(String url_str) throws IOException, InterruptedException{
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url_str))
+                .build();
+        HttpResponse<String> response = client
+                .send(request, HttpResponse.BodyHandlers.ofString());
+        return response;
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -97,21 +107,53 @@ public class Application {
 
             String url_str = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/pair/" + baseCurrency + "/" + targetCurrency;
 
-            HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(url_str))
-                    .build();
-            HttpResponse<String> response = client
-                    .send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = getHttpResponseByUrl(url_str);
 
             String json = response.body();
-            Gson gson = new Gson();
-            ConversionExchangeRate conversion = gson.fromJson(json, ConversionExchangeRate.class);
 
-            float conversionRate = conversion.conversion_rate();
+            //System.out.println(json);
+
+            ConversionFromBaseToTargetCurrency conversionFromBaseToTargetCurrency = ConversionDeserializer.deserializeToConversionFromBaseToTargetCurrency(json);
+
+            float conversionRate = conversionFromBaseToTargetCurrency.getConversionRate();
 
             System.out.printf("Valor %.2f [%s] corresponde ao valor final de -> %.2f [%s].\n", valueToConvert, baseCurrency, valueToConvert * conversionRate, targetCurrency);
+
+            url_str = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/latest/BRL";
+
+            response = getHttpResponseByUrl(url_str);
+
+            json = response.body();
+
+            //System.out.println(json);
+
+            ConversionFromBaseCurrency conversionFromBaseCurrency = ConversionDeserializer.deserializeToConversionFromBaseCurrency(json);
+
+            //System.out.println(conversionFromBaseCurrency.getConversionRates());
+
+            Map<Integer, String> baseCodeOptions = new HashMap<>();
+
+            int index = 1;
+            for (String baseCode : conversionFromBaseCurrency.getConversionRates().keySet()) {
+                baseCodeOptions.put(index, baseCode);
+                index++;
+            }
+
+            //System.out.println(baseCodeOptions);
+
+
+
+
+
+
+
+            //gson = new Gson();
+            //ConversionExchangeRate conversion = gson.fromJson(json, ConversionExchangeRate.class);
+
+
         }
+
+
 
     }
 }
