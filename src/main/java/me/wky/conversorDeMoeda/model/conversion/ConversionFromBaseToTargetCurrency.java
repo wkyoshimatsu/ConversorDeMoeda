@@ -1,5 +1,7 @@
 package me.wky.conversorDeMoeda.model.conversion;
 
+import me.wky.conversorDeMoeda.util.exchangeRateApi.ConversionFromBaseToTargetCurrencyExchangeRate;
+
 public class ConversionFromBaseToTargetCurrency {
     String baseCurrencyCode;
     String targetCurrencyCode;
