@@ -1,6 +1,10 @@
-package me.wky.conversorDeMoeda.models;
+package me.wky.conversorDeMoeda.util;
 
 import com.google.gson.Gson;
+import me.wky.conversorDeMoeda.model.conversion.ConversionFromBaseCurrency;
+import me.wky.conversorDeMoeda.model.conversion.ConversionFromBaseCurrencyExchangeRate;
+import me.wky.conversorDeMoeda.model.conversion.ConversionFromBaseToTargetCurrency;
+import me.wky.conversorDeMoeda.model.conversion.ConversionFromBaseToTargetCurrencyExchangeRate;
 
 public class ConversionDeserializer {
 
