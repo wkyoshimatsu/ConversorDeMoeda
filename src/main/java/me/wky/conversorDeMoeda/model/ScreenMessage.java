@@ -46,11 +46,11 @@ public class ScreenMessage {
 
     public static void
 
-    public static void valueRequest(){
+    public static void printValueRequest(){
         System.out.println("Digite o valor que deseja converter:");
     }
 
-    public static void exchangeResult(double valueToConvert, String baseCurrency, double conversionRate, String targetCurrency) {
+    public static void printExchangeResult(double valueToConvert, String baseCurrency, double conversionRate, String targetCurrency) {
         System.out.printf("Valor %.2f [%s] corresponde ao valor final de -> %.2f [%s].\n", valueToConvert, baseCurrency, valueToConvert * conversionRate, targetCurrency);
     }
 
