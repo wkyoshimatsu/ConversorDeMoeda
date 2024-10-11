@@ -1,7 +1,10 @@
 package me.wky.conversorDeMoeda;
 
-import com.google.gson.Gson;
-import me.wky.conversorDeMoeda.models.*;
+import me.wky.conversorDeMoeda.model.InputValidator;
+import me.wky.conversorDeMoeda.model.ScreenMessage;
+import me.wky.conversorDeMoeda.model.conversion.ConversionFromBaseCurrency;
+import me.wky.conversorDeMoeda.model.conversion.ConversionFromBaseToTargetCurrency;
+import me.wky.conversorDeMoeda.util.ConversionDeserializer;
 
 import java.io.IOException;
 import java.net.URI;
@@ -16,29 +19,7 @@ public class Application {
 
     public static final String API_KEY= System.getenv("API_KEY");
 
-    public static int exchangeSelector() {
-        Scanner scanner = new Scanner(System.in);
 
-        int option = 0;
-        while (option < 1 || option > 7){
-            System.out.println("""
-                ***************************************************
-                      Seja bem-vindo(a) ao Conversor de Moeda
-                
-                1) Real (BRL)             ->  Dólar Americano (USD)
-                2) Dólar Americano (USD)  ->  Real (BRL)
-                3) Real (BRL)             ->  Peso Argentino (ARS)
-                4) Peso Argentino (ARS)   ->  Real (BRL)
-                5) Real (BRL)             ->  Iene (JPY)
-                6) Iene (JPY)             ->  Real (BRL)
-                7) Sair
-                
-                Selecione uma opção válida:
-                ***************************************************""");
-            option = scanner.nextInt();
-        }
-        return option;
-    }
 
     public static double getValueToConvert(){
         Scanner scanner = new Scanner(System.in);
@@ -62,42 +43,40 @@ public class Application {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
+
+        /*
+        mostra tela inicial
+        seleciona opção
+
+        if (não sair)
+            seleciona valor
+            converte
+
+        */
+
         int option = 0;
-        while (option != 7){
-            option = exchangeSelector();
+        while (true){
+            ScreenMessage.printExchangeOptions();
+            option = InputValidator.exchangeSelector();
 
-            String baseCurrency = "";
-            String targetCurrency = "";
-
-            switch (option){
-                case 1:
-                    baseCurrency = "BRL";
-                    targetCurrency = "USD";
-                    break;
-                case 2:
-                    baseCurrency = "USD";
-                    targetCurrency = "BRL";
-                    break;
-                case 3:
-                    baseCurrency = "BRL";
-                    targetCurrency = "ARS";
-                    break;
-                case 4:
-                    baseCurrency = "ARS";
-                    targetCurrency = "BRL";
-                    break;
-                case 5:
-                    baseCurrency = "BRL";
-                    targetCurrency = "JPY";
-                    break;
-                case 6:
-                    baseCurrency = "JPY";
-                    targetCurrency = "BRL";
-                    break;
-                case 7:
-                    System.out.println("Até mais!");
-                    break;
+            if (option == 7){
+                break;
             }
+
+            String baseCurrency = ScreenMessage.getBaseCurrency(option);
+            String targetCurrency = ScreenMessage.getTargetCurrency(option);
+        }
+
+
+
+
+
+
+
+        while (){
+
+
+
 
             if (option == 7){
                 break;
