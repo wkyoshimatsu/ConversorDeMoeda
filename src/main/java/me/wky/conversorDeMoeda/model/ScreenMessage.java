@@ -44,7 +44,9 @@ public class ScreenMessage {
         return EXCHANGE_OPTIONS[option - 1][1];
     }
 
-    public static void
+    public static void printEndMessage(){
+        System.out.println("Obrigado por utilizar o Conversor de Moeda!");
+    }
 
     public static void printValueRequest(){
         System.out.println("Digite o valor que deseja converter:");
