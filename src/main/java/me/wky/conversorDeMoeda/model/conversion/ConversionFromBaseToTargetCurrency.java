@@ -1,4 +1,4 @@
-package me.wky.conversorDeMoeda.models;
+package me.wky.conversorDeMoeda.model.conversion;
 
 public class ConversionFromBaseToTargetCurrency {
     String baseCurrencyCode;

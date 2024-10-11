@@ -1,4 +1,4 @@
-package me.wky.conversorDeMoeda.models;
+package me.wky.conversorDeMoeda.model.conversion;
 
 import java.util.Map;
 
