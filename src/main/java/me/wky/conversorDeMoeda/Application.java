@@ -40,7 +40,6 @@ public class Application {
             double valueToConvert;
             float conversionRate;
 
-            ScreenMessage.printExchangeOptions();
             option = InputValidator.exchangeSelector();
 
 
