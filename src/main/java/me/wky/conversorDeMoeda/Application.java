@@ -68,7 +68,7 @@ public class Application {
 
                 ScreenMessage.printExchangeResult(valueToConvert,
                         baseCurrency,
-                        valueToConvert * conversionRate,
+                        conversionRate,
                         targetCurrency);
             } else {
 
