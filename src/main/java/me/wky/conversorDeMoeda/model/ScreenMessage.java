@@ -68,12 +68,25 @@ public class ScreenMessage {
         System.out.println("Digite o valor que deseja converter:");
     }
 
-    public static void printExchangeResult(double valueToConvert, String baseCurrency, double conversionRate, String targetCurrency) {
-        System.out.printf("Valor %.2f [%s] corresponde ao valor final de -> %.2f [%s].\n", valueToConvert, baseCurrency, valueToConvert * conversionRate, targetCurrency);
+    private static String formatValueBasedOnCurrency(double valueToConvert, String currency){
+        if (Currency.CURRENCIES_WITHOUT_CENTS.contains(currency)){
+            return String.format("%.0f", valueToConvert);
+        }
+        return String.format("%.2f", valueToConvert);
     }
 
+    public static void printExchangeResult(double valueToConvert,
+                                           String baseCurrency,
+                                           double conversionRate,
+                                           String targetCurrency) {
 
+        String valueToConvertString = formatValueBasedOnCurrency(valueToConvert, baseCurrency);
+        String valueConvertedString = formatValueBasedOnCurrency(valueToConvert * conversionRate, targetCurrency);
 
-
-
+        System.out.printf("Valor %s [%s] corresponde ao valor final de -> %s [%s].\n\n",
+                valueToConvertString,
+                baseCurrency,
+                valueConvertedString,
+                targetCurrency);
+    }
 }
