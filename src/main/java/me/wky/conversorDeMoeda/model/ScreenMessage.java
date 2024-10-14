@@ -1,60 +1,73 @@
 package me.wky.conversorDeMoeda.model;
 
 public class ScreenMessage {
-    private static final String[][] EXCHANGE_OPTIONS = {
-            {"BRL","USD"},
-            {"USD","BRL"},
-            {"BRL","ARS"},
-            {"ARS","BRL"},
-            {"BRL","JPY"},
-            {"JPY","BRL"}
-    };
 
-    private static final String[] CURRENCY_CODE_AND_DESCRIPTION = {
-            "Real (BRL)",
-            "Dólar Americano (USD)",
-            "Peso Argentino (ARS)",
-            "Iene Japonês (JPY)",
+    public static final int CUSTOM_OPTION = Currency.EXCHANGE_OPTIONS_SIZE + 1;
 
-    };
+    public static final int EXIT_OPTION = Currency.EXCHANGE_OPTIONS_SIZE + 2;
 
     public static void printExchangeOptions(){
         System.out.println("""
                 ***************************************************
                       Seja bem-vindo(a) ao Conversor de Moeda
-                
-                1) Real (BRL)             ->  Dólar Americano (USD)
-                2) Dólar Americano (USD)  ->  Real (BRL)
-                3) Real (BRL)             ->  Peso Argentino (ARS)
-                4) Peso Argentino (ARS)   ->  Real (BRL)
-                5) Real (BRL)             ->  Iene (JPY)
-                6) Iene (JPY)             ->  Real (BRL)
-                7) Sair
+                """);
+
+        for (int i = 0; i < Currency.EXCHANGE_OPTIONS_SIZE + 2; i++) {
+            int index = i + 1;
+            if (index == CUSTOM_OPTION){
+                System.out.println(index + ") Opção customizada");
+            } else if (index == EXIT_OPTION){
+                System.out.println(index + ") Sair");
+            } else {
+                System.out.printf("%d) %s -> %s\n",
+                        index,
+                        Currency.STANDARD_CURRENCIES.get(Currency.STANDARD_EXCHANGE_OPTIONS[i][0]),
+                        Currency.STANDARD_CURRENCIES.get(Currency.STANDARD_EXCHANGE_OPTIONS[i][1]));
+            }
+        }
+
+        System.out.println("""
                 
                 Selecione uma opção válida:
-                ***************************************************
-                """);
+                ***************************************************""");
+
     }
 
     public static String getBaseCurrency(int option){
-        return EXCHANGE_OPTIONS[option - 1][0];
+        return Currency.STANDARD_EXCHANGE_OPTIONS[option - 1][0];
     }
 
     public static String getTargetCurrency(int option){
-        return EXCHANGE_OPTIONS[option - 1][1];
+        return Currency.STANDARD_EXCHANGE_OPTIONS[option - 1][1];
     }
 
-    public static void
+    public static void printEndMessage(){
+        System.out.println("Obrigado por utilizar o Conversor de Moeda!");
+    }
 
-    public static void valueRequest(){
+    public static void printValueRequest(){
         System.out.println("Digite o valor que deseja converter:");
     }
 
-    public static void exchangeResult(double valueToConvert, String baseCurrency, double conversionRate, String targetCurrency) {
-        System.out.printf("Valor %.2f [%s] corresponde ao valor final de -> %.2f [%s].\n", valueToConvert, baseCurrency, valueToConvert * conversionRate, targetCurrency);
+    private static String formatValueBasedOnCurrency(double valueToConvert, String currency){
+        if (Currency.CURRENCIES_WITHOUT_CENTS.contains(currency)){
+            return String.format("%.0f", valueToConvert);
+        }
+        return String.format("%.2f", valueToConvert);
     }
 
+    public static void printExchangeResult(double valueToConvert,
+                                           String baseCurrency,
+                                           double conversionRate,
+                                           String targetCurrency) {
 
+        String valueToConvertString = formatValueBasedOnCurrency(valueToConvert, baseCurrency);
+        String valueConvertedString = formatValueBasedOnCurrency(valueToConvert * conversionRate, targetCurrency);
 
-
+        System.out.printf("Valor %s [%s] corresponde ao valor final de -> %s [%s].\n\n",
+                valueToConvertString,
+                baseCurrency,
+                valueConvertedString,
+                targetCurrency);
+    }
 }
