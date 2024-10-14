@@ -1,7 +1,16 @@
 package me.wky.conversorDeMoeda.model;
 
+import java.util.Map;
+
 public class ScreenMessage {
-    private static final String[][] EXCHANGE_OPTIONS = {
+
+    private static final Map<String, String> STANDARD_CURRENCIES = Map.of(
+            "BRL", "Real (BRL)            ",
+            "USD", "Dólar Americano (USD) ",
+            "ARS", "Peso Argentino (ARS)  ",
+            "JPY", "Iene Japonês (JPY)    ");
+
+    private static final String[][] STANDARD_EXCHANGE_OPTIONS = {
             {"BRL","USD"},
             {"USD","BRL"},
             {"BRL","ARS"},
@@ -10,38 +19,46 @@ public class ScreenMessage {
             {"JPY","BRL"}
     };
 
-    private static final String[] CURRENCY_CODE_AND_DESCRIPTION = {
-            "Real (BRL)",
-            "Dólar Americano (USD)",
-            "Peso Argentino (ARS)",
-            "Iene Japonês (JPY)",
+    private static final int EXCHANGE_OPTIONS_SIZE = STANDARD_EXCHANGE_OPTIONS.length;
 
-    };
+    public static final int CUSTOM_OPTION = EXCHANGE_OPTIONS_SIZE + 1;
+
+    public static final int EXIT_OPTION = EXCHANGE_OPTIONS_SIZE + 2;
 
     public static void printExchangeOptions(){
         System.out.println("""
                 ***************************************************
                       Seja bem-vindo(a) ao Conversor de Moeda
                 
-                1) Real (BRL)             ->  Dólar Americano (USD)
-                2) Dólar Americano (USD)  ->  Real (BRL)
-                3) Real (BRL)             ->  Peso Argentino (ARS)
-                4) Peso Argentino (ARS)   ->  Real (BRL)
-                5) Real (BRL)             ->  Iene (JPY)
-                6) Iene (JPY)             ->  Real (BRL)
-                7) Sair
+                """);
+
+        for (int i = 0; i < EXCHANGE_OPTIONS_SIZE + 2; i++) {
+            if (i == CUSTOM_OPTION){
+                System.out.println(i + ") Opção customizada");
+            } else if (i == EXIT_OPTION){
+                System.out.println(i + ") Sair");
+            } else {
+                System.out.printf("%d) %s -> %s\n",
+                i + 1,
+                STANDARD_CURRENCIES.get(STANDARD_EXCHANGE_OPTIONS[i][0]),
+                STANDARD_CURRENCIES.get(STANDARD_EXCHANGE_OPTIONS[i][1]));
+            }
+        }
+
+        System.out.println("""
                 
                 Selecione uma opção válida:
                 ***************************************************
                 """);
+
     }
 
     public static String getBaseCurrency(int option){
-        return EXCHANGE_OPTIONS[option - 1][0];
+        return STANDARD_EXCHANGE_OPTIONS[option - 1][0];
     }
 
     public static String getTargetCurrency(int option){
-        return EXCHANGE_OPTIONS[option - 1][1];
+        return STANDARD_EXCHANGE_OPTIONS[option - 1][1];
     }
 
     public static void printEndMessage(){
@@ -55,6 +72,7 @@ public class ScreenMessage {
     public static void printExchangeResult(double valueToConvert, String baseCurrency, double conversionRate, String targetCurrency) {
         System.out.printf("Valor %.2f [%s] corresponde ao valor final de -> %.2f [%s].\n", valueToConvert, baseCurrency, valueToConvert * conversionRate, targetCurrency);
     }
+
 
 
 
