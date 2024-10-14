@@ -9,13 +9,6 @@ import me.wky.conversorDeMoeda.util.HttpResponseFactory;
 import me.wky.conversorDeMoeda.util.exchangeRateApi.ExchangeRateAPI;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
 
 public class Application {
 
@@ -23,25 +16,16 @@ public class Application {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        /*
-        mostra tela inicial
-        seleciona opção
-
-        if (não sair)
-            seleciona valor
-            converte
-
-        */
-
         int option = 0;
+
         while (true){
+
             String baseCurrency;
             String targetCurrency;
             double valueToConvert;
             float conversionRate;
 
             option = InputValidator.exchangeSelector();
-
 
             if (option == ScreenMessage.EXIT_OPTION){
 
@@ -161,8 +145,9 @@ public class Application {
 
                 //gson = new Gson();
                 //ConversionExchangeRate conversion = gson.fromJson(json, ConversionExchangeRate.class);
-            }
+                */
 
+            }
         }
     }
 }
