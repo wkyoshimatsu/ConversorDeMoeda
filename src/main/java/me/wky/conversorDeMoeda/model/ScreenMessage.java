@@ -29,27 +29,26 @@ public class ScreenMessage {
         System.out.println("""
                 ***************************************************
                       Seja bem-vindo(a) ao Conversor de Moeda
-                
                 """);
 
-        for (int i = 0; i < EXCHANGE_OPTIONS_SIZE + 2; i++) {
-            if (i == CUSTOM_OPTION){
-                System.out.println(i + ") Opção customizada");
-            } else if (i == EXIT_OPTION){
-                System.out.println(i + ") Sair");
+        for (int i = 0; i < Currency.EXCHANGE_OPTIONS_SIZE + 2; i++) {
+            int index = i + 1;
+            if (index == CUSTOM_OPTION){
+                System.out.println(index + ") Opção customizada");
+            } else if (index == EXIT_OPTION){
+                System.out.println(index + ") Sair");
             } else {
                 System.out.printf("%d) %s -> %s\n",
-                i + 1,
-                STANDARD_CURRENCIES.get(STANDARD_EXCHANGE_OPTIONS[i][0]),
-                STANDARD_CURRENCIES.get(STANDARD_EXCHANGE_OPTIONS[i][1]));
+                        index,
+                        Currency.STANDARD_CURRENCIES.get(Currency.STANDARD_EXCHANGE_OPTIONS[i][0]),
+                        Currency.STANDARD_CURRENCIES.get(Currency.STANDARD_EXCHANGE_OPTIONS[i][1]));
             }
         }
 
         System.out.println("""
                 
                 Selecione uma opção válida:
-                ***************************************************
-                """);
+                ***************************************************""");
 
     }
 
@@ -69,12 +68,25 @@ public class ScreenMessage {
         System.out.println("Digite o valor que deseja converter:");
     }
 
-    public static void printExchangeResult(double valueToConvert, String baseCurrency, double conversionRate, String targetCurrency) {
-        System.out.printf("Valor %.2f [%s] corresponde ao valor final de -> %.2f [%s].\n", valueToConvert, baseCurrency, valueToConvert * conversionRate, targetCurrency);
+    private static String formatValueBasedOnCurrency(double valueToConvert, String currency){
+        if (Currency.CURRENCIES_WITHOUT_CENTS.contains(currency)){
+            return String.format("%.0f", valueToConvert);
+        }
+        return String.format("%.2f", valueToConvert);
     }
 
+    public static void printExchangeResult(double valueToConvert,
+                                           String baseCurrency,
+                                           double conversionRate,
+                                           String targetCurrency) {
 
+        String valueToConvertString = formatValueBasedOnCurrency(valueToConvert, baseCurrency);
+        String valueConvertedString = formatValueBasedOnCurrency(valueToConvert * conversionRate, targetCurrency);
 
-
-
+        System.out.printf("Valor %s [%s] corresponde ao valor final de -> %s [%s].\n\n",
+                valueToConvertString,
+                baseCurrency,
+                valueConvertedString,
+                targetCurrency);
+    }
 }
