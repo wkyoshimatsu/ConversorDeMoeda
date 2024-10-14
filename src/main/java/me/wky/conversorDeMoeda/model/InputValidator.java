@@ -7,7 +7,7 @@ public class InputValidator {
         Scanner scanner = new Scanner(System.in);
 
         int option = 0;
-        while (option < 1 || option > 7){
+        while (option < 1 || option > ScreenMessage.EXIT_OPTION){
             ScreenMessage.printExchangeOptions();
             option = scanner.nextInt();
         }
