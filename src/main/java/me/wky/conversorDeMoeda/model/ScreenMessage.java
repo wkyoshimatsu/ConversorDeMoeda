@@ -1,29 +1,10 @@
 package me.wky.conversorDeMoeda.model;
 
-import java.util.Map;
-
 public class ScreenMessage {
 
-    private static final Map<String, String> STANDARD_CURRENCIES = Map.of(
-            "BRL", "Real (BRL)            ",
-            "USD", "Dólar Americano (USD) ",
-            "ARS", "Peso Argentino (ARS)  ",
-            "JPY", "Iene Japonês (JPY)    ");
+    public static final int CUSTOM_OPTION = Currency.EXCHANGE_OPTIONS_SIZE + 1;
 
-    private static final String[][] STANDARD_EXCHANGE_OPTIONS = {
-            {"BRL","USD"},
-            {"USD","BRL"},
-            {"BRL","ARS"},
-            {"ARS","BRL"},
-            {"BRL","JPY"},
-            {"JPY","BRL"}
-    };
-
-    private static final int EXCHANGE_OPTIONS_SIZE = STANDARD_EXCHANGE_OPTIONS.length;
-
-    public static final int CUSTOM_OPTION = EXCHANGE_OPTIONS_SIZE + 1;
-
-    public static final int EXIT_OPTION = EXCHANGE_OPTIONS_SIZE + 2;
+    public static final int EXIT_OPTION = Currency.EXCHANGE_OPTIONS_SIZE + 2;
 
     public static void printExchangeOptions(){
         System.out.println("""
@@ -53,11 +34,11 @@ public class ScreenMessage {
     }
 
     public static String getBaseCurrency(int option){
-        return STANDARD_EXCHANGE_OPTIONS[option - 1][0];
+        return Currency.STANDARD_EXCHANGE_OPTIONS[option - 1][0];
     }
 
     public static String getTargetCurrency(int option){
-        return STANDARD_EXCHANGE_OPTIONS[option - 1][1];
+        return Currency.STANDARD_EXCHANGE_OPTIONS[option - 1][1];
     }
 
     public static void printEndMessage(){
