@@ -19,7 +19,7 @@ public class InputValidator {
 
         double valueToConvert = 0;
         while (valueToConvert <= 0){
-            ScreenMessage.valueRequest();
+            ScreenMessage.printValueRequest();
             valueToConvert = scanner.nextDouble();
         }
         return valueToConvert;
