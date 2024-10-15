@@ -1,5 +1,6 @@
 package me.wky.conversorDeMoeda;
 
+import me.wky.conversorDeMoeda.model.Currency;
 import me.wky.conversorDeMoeda.model.InputValidator;
 import me.wky.conversorDeMoeda.model.ScreenMessage;
 import me.wky.conversorDeMoeda.model.conversion.ConversionFromBaseCurrency;
@@ -35,8 +36,8 @@ public class Application {
 
             } else if (option != ScreenMessage.CUSTOM_OPTION){
 
-                baseCurrency = ScreenMessage.getBaseCurrency(option);
-                targetCurrency = ScreenMessage.getTargetCurrency(option);
+                baseCurrency = Currency.getBaseCurrency(option);
+                targetCurrency = Currency.getTargetCurrency(option);
 
                 valueToConvert = InputValidator.getValueToConvert();
 
@@ -66,50 +67,16 @@ public class Application {
 
                 List<String> baseCodeOptions = List.copyOf(conversionFromBaseCurrency.getConversionRates().keySet());
 
-                ScreenMessage.printAllCurrencyCodes(baseCodeOptions);
-
-
-
-                /*
-
-                baseCurrency = ScreenMessage.getBaseCurrency(option);
-                targetCurrency = ScreenMessage.getTargetCurrency(option);
+                baseCurrency = InputValidator.getCustomBaseCurrency(baseCodeOptions);
+                targetCurrency = InputValidator.getCustomTargetCurrency(baseCurrency, baseCodeOptions);
 
                 valueToConvert = InputValidator.getValueToConvert();
 
                 ExchangeRateAPI exchangeRateAPI = new ExchangeRateAPI(baseCurrency, targetCurrency);
 
-                String json = HttpResponseFactory
-                        .getJsonByUrl(exchangeRateAPI
-                                .getUrlWithBaseCurrency());
-
-                ConversionFromBaseCurrency conversionFromBaseCurrency = ConversionDeserializer
-                        .deserializeToConversionFromBaseCurrency(json);
-
-                Map<Integer, String> baseCodeOptions = new HashMap<>();
-
-                int index = 1;
-                for (String baseCode : conversionFromBaseCurrency.getConversionRates().keySet()) {
-                    baseCodeOptions.put(index, baseCode);
-                    index++;
-                }
-
-                int baseCodeOption = 0;
-                while (true){
-                    System.out.println("Selecione a moeda base:");
-                    for (int i = 1; i <= baseCodeOptions.size(); i++) {
-                        System.out.printf("%d) %s\n", i, baseCodeOptions.get(i));
-                    }
-                    baseCodeOption = new Scanner(System.in).nextInt();
-                    if (baseCodeOptions.containsKey(baseCodeOption)){
-                        break;
-                    }
-                }
-
-                String selectedBaseCode = baseCodeOptions.get(baseCodeOption);
-
                 json = HttpResponseFactory
-                        .getJsonByUrl("https://v6.exchangerate-api.com/v6/" + API_KEY + "/pair/" + selectedBaseCode + "/" + targetCurrency);
+                        .getJsonByUrl(exchangeRateAPI
+                                .getUrlWithBaseAndTargetCurrency());
 
                 ConversionFromBaseToTargetCurrency conversionFromBaseToTargetCurrency = ConversionDeserializer
                         .deserializeToConversionFromBaseToTargetCurrency(json);
@@ -117,8 +84,8 @@ public class Application {
                 conversionRate = conversionFromBaseToTargetCurrency.getConversionRate();
 
                 ScreenMessage.printExchangeResult(valueToConvert,
-                        selectedBaseCode,
-                        valueToConvert * conversionRate,
+                        baseCurrency,
+                        conversionRate,
                         targetCurrency);
             }
         }
