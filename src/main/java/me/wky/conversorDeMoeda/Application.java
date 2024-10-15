@@ -57,36 +57,7 @@ public class Application {
                         conversionRate,
                         targetCurrency);
             } else {
-                System.out.println("Custom option selected");
-
-                String json = HttpResponseFactory
-                        .getJsonByUrl(ExchangeRateAPI.urlWithBaseCurrency);
-
-                ConversionFromBaseCurrency conversionFromBaseCurrency = ConversionDeserializer
-                        .deserializeToConversionFromBaseCurrency(json);
-
-                List<String> baseCodeOptions = List.copyOf(conversionFromBaseCurrency.getConversionRates().keySet());
-
-                baseCurrency = InputValidator.getCustomBaseCurrency(baseCodeOptions);
-                targetCurrency = InputValidator.getCustomTargetCurrency(baseCurrency, baseCodeOptions);
-
-                valueToConvert = InputValidator.getValueToConvert();
-
-                ExchangeRateAPI exchangeRateAPI = new ExchangeRateAPI(baseCurrency, targetCurrency);
-
-                json = HttpResponseFactory
-                        .getJsonByUrl(exchangeRateAPI
-                                .getUrlWithBaseAndTargetCurrency());
-
-                ConversionFromBaseToTargetCurrency conversionFromBaseToTargetCurrency = ConversionDeserializer
-                        .deserializeToConversionFromBaseToTargetCurrency(json);
-
-                conversionRate = conversionFromBaseToTargetCurrency.getConversionRate();
-
-                ScreenMessage.printExchangeResult(valueToConvert,
-                        baseCurrency,
-                        conversionRate,
-                        targetCurrency);
+                Calculator.customCalculator();
             }
         }
     }

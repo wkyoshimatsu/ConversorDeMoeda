@@ -1,5 +1,11 @@
 package me.wky.conversorDeMoeda.model;
 
+import me.wky.conversorDeMoeda.model.conversion.ConversionFromBaseCurrency;
+import me.wky.conversorDeMoeda.util.ConversionDeserializer;
+import me.wky.conversorDeMoeda.util.HttpResponseFactory;
+import me.wky.conversorDeMoeda.util.exchangeRateApi.ExchangeRateAPI;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -32,5 +38,19 @@ public class Currency {
         return STANDARD_EXCHANGE_OPTIONS[option - 1][1];
     }
 
-    //List<> currencies;
+    private List<String> currenciesAvailables;
+
+    public Currency() throws IOException, InterruptedException {
+        String json = HttpResponseFactory
+                .getJsonByUrl(ExchangeRateAPI.urlWithBaseCurrency);
+
+        ConversionFromBaseCurrency conversionFromBaseCurrency = ConversionDeserializer
+                .deserializeToConversionFromBaseCurrency(json);
+
+        currenciesAvailables = List.copyOf(conversionFromBaseCurrency.getConversionRates().keySet());
+    }
+
+    public List<String> getCurrenciesAvailables() {
+        return currenciesAvailables;
+    }
 }
