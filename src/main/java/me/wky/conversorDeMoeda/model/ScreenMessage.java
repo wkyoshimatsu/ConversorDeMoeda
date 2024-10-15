@@ -65,14 +65,6 @@ public class ScreenMessage {
         }
     }
 
-    public static String getBaseCurrency(int option){
-        return Currency.STANDARD_EXCHANGE_OPTIONS[option - 1][0];
-    }
-
-    public static String getTargetCurrency(int option){
-        return Currency.STANDARD_EXCHANGE_OPTIONS[option - 1][1];
-    }
-
     public static void printEndMessage(){
         System.out.println("Obrigado por utilizar o Conversor de Moeda!");
     }

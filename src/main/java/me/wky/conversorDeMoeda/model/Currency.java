@@ -24,5 +24,13 @@ public class Currency {
 
     static final int EXCHANGE_OPTIONS_SIZE = STANDARD_EXCHANGE_OPTIONS.length;
 
+    public static String getBaseCurrency(int option){
+        return STANDARD_EXCHANGE_OPTIONS[option - 1][0];
+    }
+
+    public static String getTargetCurrency(int option){
+        return STANDARD_EXCHANGE_OPTIONS[option - 1][1];
+    }
+
     //List<> currencies;
 }
