@@ -1,39 +1,21 @@
 package me.wky.conversorDeMoeda;
 
-import me.wky.conversorDeMoeda.model.Currency;
+import me.wky.conversorDeMoeda.model.Calculator;
 import me.wky.conversorDeMoeda.model.InputValidator;
 import me.wky.conversorDeMoeda.model.ScreenMessage;
-import me.wky.conversorDeMoeda.model.conversion.ConversionFromBaseCurrency;
-import me.wky.conversorDeMoeda.model.conversion.ConversionFromBaseToTargetCurrency;
-import me.wky.conversorDeMoeda.util.ConversionDeserializer;
-import me.wky.conversorDeMoeda.util.HttpResponseFactory;
-import me.wky.conversorDeMoeda.util.exchangeRateApi.ExchangeRateAPI;
 
 import java.io.IOException;
-import java.util.List;
 
 public class Application {
 
     public static final String API_KEY= System.getenv("API_KEY");
 
     public static void main(String[] args) throws IOException, InterruptedException {
-
-        int option = 0;
-
         while (true){
-
-            String baseCurrency;
-            String targetCurrency;
-            double valueToConvert;
-            float conversionRate;
-
-            option = InputValidator.exchangeSelector();
-
+            int option = InputValidator.exchangeSelector();
             if (option == ScreenMessage.EXIT_OPTION){
-
                 ScreenMessage.printEndMessage();
                 break;
-
             } else if (option != ScreenMessage.CUSTOM_OPTION){
                 Calculator.standardCalculator(option);
             } else {
