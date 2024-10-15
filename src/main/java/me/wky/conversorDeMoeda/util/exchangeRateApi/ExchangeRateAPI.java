@@ -3,7 +3,7 @@ package me.wky.conversorDeMoeda.util.exchangeRateApi;
 import static me.wky.conversorDeMoeda.Application.API_KEY;
 
 public class ExchangeRateAPI {
-    private static final String urlWithBaseCurrency = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/latest/BRL";
+    public static final String urlWithBaseCurrency = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/latest/BRL";
 
     private String baseCurrency;
     private String targetCurrency;
