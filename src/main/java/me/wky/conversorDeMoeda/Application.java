@@ -35,27 +35,7 @@ public class Application {
                 break;
 
             } else if (option != ScreenMessage.CUSTOM_OPTION){
-
-                baseCurrency = Currency.getBaseCurrency(option);
-                targetCurrency = Currency.getTargetCurrency(option);
-
-                valueToConvert = InputValidator.getValueToConvert();
-
-                ExchangeRateAPI exchangeRateAPI = new ExchangeRateAPI(baseCurrency, targetCurrency);
-
-                String json = HttpResponseFactory
-                        .getJsonByUrl(exchangeRateAPI
-                                .getUrlWithBaseAndTargetCurrency());
-
-                ConversionFromBaseToTargetCurrency conversionFromBaseToTargetCurrency = ConversionDeserializer
-                        .deserializeToConversionFromBaseToTargetCurrency(json);
-
-                conversionRate = conversionFromBaseToTargetCurrency.getConversionRate();
-
-                ScreenMessage.printExchangeResult(valueToConvert,
-                        baseCurrency,
-                        conversionRate,
-                        targetCurrency);
+                Calculator.standardCalculator(option);
             } else {
                 System.out.println("Custom option selected");
 
