@@ -120,43 +120,6 @@ public class Application {
                         selectedBaseCode,
                         valueToConvert * conversionRate,
                         targetCurrency);
-
-
-
-                //
-
-                url_str = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/latest/BRL";
-
-                response = getHttpResponseByUrl(url_str);
-
-                json = response.body();
-
-                //System.out.println(json);
-
-                ConversionFromBaseCurrency conversionFromBaseCurrency = ConversionDeserializer.deserializeToConversionFromBaseCurrency(json);
-
-                //System.out.println(conversionFromBaseCurrency.getConversionRates());
-
-                Map<Integer, String> baseCodeOptions = new HashMap<>();
-
-                int index = 1;
-                for (String baseCode : conversionFromBaseCurrency.getConversionRates().keySet()) {
-                    baseCodeOptions.put(index, baseCode);
-                    index++;
-                }
-
-                //System.out.println(baseCodeOptions);
-
-
-
-
-
-
-
-                //gson = new Gson();
-                //ConversionExchangeRate conversion = gson.fromJson(json, ConversionExchangeRate.class);
-                */
-
             }
         }
     }
