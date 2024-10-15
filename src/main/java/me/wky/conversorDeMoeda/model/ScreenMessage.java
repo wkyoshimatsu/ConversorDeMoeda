@@ -1,5 +1,7 @@
 package me.wky.conversorDeMoeda.model;
 
+import java.util.List;
+
 public class ScreenMessage {
 
     public static final int CUSTOM_OPTION = Currency.EXCHANGE_OPTIONS_SIZE + 1;
@@ -31,6 +33,36 @@ public class ScreenMessage {
                 Selecione uma opção válida:
                 ***************************************************""");
 
+    }
+
+
+    public static void printAllCurrencyCodes(List<String> currencyCodes){
+        int numberOfColumns = 7;
+        int columnSize = (int) Math.ceil(currencyCodes.size() / numberOfColumns + 1);
+        int indexOfCurrencyCode;
+        String indexToPrint;
+
+        for (int i = 0; i < columnSize; i++) {
+            for (int j = 0; j < numberOfColumns; j++) {
+                indexOfCurrencyCode = i + (j * columnSize);
+
+                if (indexOfCurrencyCode + 1 < 10){
+                    indexToPrint = "  " + String.valueOf(indexOfCurrencyCode + 1);
+                } else if (indexOfCurrencyCode + 1 < 100){
+                    indexToPrint = " " + String.valueOf(indexOfCurrencyCode + 1);
+                } else {
+                    indexToPrint = String.valueOf(indexOfCurrencyCode + 1);
+                }
+
+                if (j != numberOfColumns - 1) {
+                    System.out.printf("%s) %s\t\t", indexToPrint, currencyCodes.get(indexOfCurrencyCode));
+                } else if (indexOfCurrencyCode < currencyCodes.size()){
+                    System.out.printf("%s) %s\n", indexToPrint, currencyCodes.get(indexOfCurrencyCode));
+                } else {
+                    System.out.print("\n");
+                }
+            }
+        }
     }
 
     public static String getBaseCurrency(int option){

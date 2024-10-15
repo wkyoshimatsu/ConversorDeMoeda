@@ -9,6 +9,7 @@ import me.wky.conversorDeMoeda.util.HttpResponseFactory;
 import me.wky.conversorDeMoeda.util.exchangeRateApi.ExchangeRateAPI;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Application {
 
@@ -55,12 +56,21 @@ public class Application {
                         conversionRate,
                         targetCurrency);
             } else {
+                System.out.println("Custom option selected");
+
+                String json = HttpResponseFactory
+                        .getJsonByUrl(ExchangeRateAPI.urlWithBaseCurrency);
+
+                ConversionFromBaseCurrency conversionFromBaseCurrency = ConversionDeserializer
+                        .deserializeToConversionFromBaseCurrency(json);
+
+                List<String> baseCodeOptions = List.copyOf(conversionFromBaseCurrency.getConversionRates().keySet());
+
+                ScreenMessage.printAllCurrencyCodes(baseCodeOptions);
 
 
 
-
-
-
+                /*
 
                 baseCurrency = ScreenMessage.getBaseCurrency(option);
                 targetCurrency = ScreenMessage.getTargetCurrency(option);

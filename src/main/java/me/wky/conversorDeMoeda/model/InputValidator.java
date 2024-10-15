@@ -24,4 +24,18 @@ public class InputValidator {
         }
         return valueToConvert;
     }
+
+    public static String getCustomBaseCurrency(int option){
+        Scanner scanner = new Scanner(System.in);
+
+        String baseCurrency;
+        while (true){
+            ScreenMessage.printAllCurrencyCodes();
+            baseCurrency = scanner.nextLine().toUpperCase();
+            if (Currency.STANDARD_CURRENCIES.containsKey(baseCurrency)){
+                break;
+            }
+        }
+        return baseCurrency;
+    }
 }
