@@ -125,6 +125,10 @@ java -jar target/conversor-de-moeda-1.0-SNAPSHOT.jar
 ## :memo: Tarefas em aberto
 
 :small_blue_diamond: Implementar histórico de conversões.
-:small_blue_diamond: Adicionar suporte para mais pares de moedas.
-:small_blue_diamond: Melhorar a interface textual.
+
+:small_blue_diamond: Implementar registro de logs.
+
+:small_blue_diamond: Uso de alternativas ao ExchangeRateAPI.
+
+---
 Copyright :copyright: 2024 - Conversor de Moeda
