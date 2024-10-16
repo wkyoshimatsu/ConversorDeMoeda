@@ -117,9 +117,13 @@ mvn clean install
 ```bash
 java -jar target/conversor-de-moeda-1.0-SNAPSHOT.jar
 ```
-:octocat: Desenvolvedores e Contribuintes
-<img src="https://avatars.githubusercontent.com/u/000000?v=4" width=115><br><sub>Nome do Desenvolvedor</sub>
-:memo: Tarefas em aberto
+
+## :octocat: Desenvolvedores e Contribuintes
+
+| [<img src="https://avatars2.githubusercontent.com/u/101765683?v=4" width=115><br><sub>Washington Yoshimatsu</sub>](https://github.com/wkyoshimatsu) | 
+| :---: |
+## :memo: Tarefas em aberto
+
 :small_blue_diamond: Implementar histórico de conversões.
 :small_blue_diamond: Adicionar suporte para mais pares de moedas.
 :small_blue_diamond: Melhorar a interface textual.
