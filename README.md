@@ -34,11 +34,10 @@
 - :currency_exchange: Conversão de moedas: oferece ao usuário 6 opções de pares de conversão padrão além da opção customizada.
 - :earth_americas: Atualização dinâmica das taxas de câmbio via API, garantindo dados precisos e em tempo real.
 - :page_facing_up: Exibição de resultados: mostra ao usuário o valor convertido.
-- :clipboard: Histórico de conversões: possibilidade de rastrear as últimas conversões realizadas (em desenvolvimento).
 
 ## :file_folder: Acesso ao projeto
 
-Você pode acessar o [código fonte do projeto](https://github.com/exemplo/conversor-de-moeda) ou [baixar o projeto](https://github.com/exemplo/conversor-de-moeda/archive/refs/heads/main.zip).
+Você pode acessar o [código fonte do projeto](https://github.com/wkyoshimatsu/ConversorDeMoeda/) ou [baixar o projeto](https://github.com/wkyoshimatsu/ConversorDeMoeda/archive/refs/heads/main.zip).
 
 ## :heavy_check_mark: Tecnologias utilizadas
 
