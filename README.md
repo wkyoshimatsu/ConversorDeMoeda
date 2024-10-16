@@ -111,9 +111,11 @@ export API_KEY="sua-API_KEY"
 ```bash
 mvn clean install
 ```
+
 4. Execute a aplicação:
+
 ```bash
-mvn exec:java
+java -jar target/conversor-de-moeda-1.0-SNAPSHOT.jar
 ```
 :octocat: Desenvolvedores e Contribuintes
 <img src="https://avatars.githubusercontent.com/u/000000?v=4" width=115><br><sub>Nome do Desenvolvedor</sub>
