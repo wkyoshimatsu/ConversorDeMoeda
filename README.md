@@ -69,6 +69,10 @@ Você pode acessar o [código fonte do projeto](https://github.com/wkyoshimatsu/
 
 - Java 17 instalado.
 - Maven configurado.
+- Conexão com a internet.
+- API_KEY da ExchangeRateAPI.
+  - Para obter a chave de acesso, acesse o site [ExchangeRate-API](https://www.exchangerate-api.com/).
+
 
 ## :arrow_forward: Como rodar a aplicação
 
