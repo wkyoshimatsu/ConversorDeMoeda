@@ -31,7 +31,7 @@
 
 ## :hammer: Funcionalidades
 
-- :currency_exchange: Conversão de moedas: oferece ao usuário 6 opções de conversão entre diferentes moedas.
+- :currency_exchange: Conversão de moedas: oferece ao usuário 6 opções de pares de conversão padrão além da opção customizada.
 - :earth_americas: Atualização dinâmica das taxas de câmbio via API, garantindo dados precisos e em tempo real.
 - :page_facing_up: Exibição de resultados: mostra ao usuário o valor convertido.
 - :clipboard: Histórico de conversões: possibilidade de rastrear as últimas conversões realizadas (em desenvolvimento).
