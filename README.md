@@ -23,7 +23,10 @@
 ## :pushpin: Descrição do projeto
 
 <p align="justify">
-  O Conversor de Moeda é um desafio emocionante de programação, onde o objetivo é permitir aos usuários realizar conversões de moedas em tempo real, utilizando dados dinâmicos obtidos de uma API de taxas de câmbio. O sistema oferece interatividade via console, com um menu de opções para escolher entre diferentes pares de moedas, garantindo uma experiência precisa e atualizada. O projeto foi desenvolvido em Java, com foco no consumo de APIs e manipulação de dados JSON.
+  O Conversor de Moeda é um projeto que permite conversões de moedas em tempo real, utilizando dados de uma API de taxas de câmbio.
+</p>
+<p align="justify">
+ O sistema oferece um menu interativo via console para a escolha de pares de moedas, garantindo conversões precisas e atualizadas.
 </p>
 
 ## :hammer: Funcionalidades
