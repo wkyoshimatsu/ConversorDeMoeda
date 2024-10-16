@@ -87,7 +87,27 @@ git clone https://github.com/wkyoshimatsu/ConversorDeMoeda/
 ```bash
 cd ConversorDeMoeda-main
 ```
-3. Execute o Maven para compilar o projeto:
+3. Configurar a API_KEY
+
+O projeto depende de uma variável de ambiente chamada API_KEY (obtida no site [ExchangeRate-API](https://www.exchangerate-api.com/)).
+
+Defina essa variável pelo terminal antes de rodar o projeto.
+
+No Windows:
+
+```bash
+$env:API_KEY="sua-API_KEY"
+```
+
+No Linux/Mac:
+
+```bash
+export API_KEY="sua-API_KEY"
+```
+
+
+4. Execute o Maven para compilar o projeto:
+
 ```bash
 mvn clean install
 ```
