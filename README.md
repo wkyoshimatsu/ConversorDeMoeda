@@ -1,8 +1,11 @@
 <h1 align="center">Conversor de Moeda</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=&message=Java&color=blue&style=for-the-badge&logo=java"/>
-  <img src="https://img.shields.io/static/v1?label=&message=API&color=yellow&style=for-the-badge&logo=api"/>
+  <img src="https://img.shields.io/static/v1?label=&message=Java&color=gray&style=for-the-badge&logo=oracle"/>
+  <img src="https://img.shields.io/static/v1?label=&message=Maven&color=gray&style=for-the-badge&logo=apachemaven"/>
+  <img src="https://img.shields.io/static/v1?label=&message=gson&color=gray&style=for-the-badge&logo=google"/>
+  <img src="https://img.shields.io/static/v1?label=&message=json&color=gray&style=for-the-badge&logo=json"/>
+  <img src="https://img.shields.io/static/v1?label=&message=API&color=gray&style=for-the-badge&logo="/>
   <img src="https://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=red&style=for-the-badge"/>
 </p>
 
