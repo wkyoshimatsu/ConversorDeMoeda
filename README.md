@@ -83,8 +83,9 @@ git clone https://github.com/wkyoshimatsu/ConversorDeMoeda/
 ```
 
 2. Entre na pasta do projeto:
+
 ```bash
-cd conversor-de-moeda
+cd ConversorDeMoeda-main
 ```
 3. Execute o Maven para compilar o projeto:
 ```bash
