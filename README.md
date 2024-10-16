@@ -76,10 +76,10 @@ Você pode acessar o [código fonte do projeto](https://github.com/wkyoshimatsu/
 
 ## :arrow_forward: Como rodar a aplicação
 
-1. Clone o repositório:
+1. Clone o repositório do projeto ou [baixe o arquivo ZIP](https://github.com/wkyoshimatsu/ConversorDeMoeda/archive/refs/heads/main.zip):
 
 ```bash
-git clone https://github.com/exemplo/conversor-de-moeda
+git clone https://github.com/wkyoshimatsu/ConversorDeMoeda/
 ```
 
 2. Entre na pasta do projeto:
