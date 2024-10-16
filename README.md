@@ -42,16 +42,28 @@ Você pode acessar o [código fonte do projeto](https://github.com/wkyoshimatsu/
 ## :heavy_check_mark: Tecnologias utilizadas
 
 - `Java 17`:
-  > Linguagem principal utilizada no desenvolvimento da aplicação.
+  > Linguagem de programação utilizada para o desenvolvimento do projeto, proporcionando robustez e portabilidade.
 
-- `Maven`:
-  > Gerenciador de dependências e build do projeto.
+- `HttpClient, HttpRequest e HttpResponse`:
+  >   Classe do Java utilizada para fazer requisições e obter respostas HTTP da API de taxas de câmbio
+
+- `API de Taxas de Câmbio (ExchangeRateAPI)`:
+  > Integração com APIs para obter taxas de câmbio atualizadas em tempo real (neste caso foi utilizado [ExchangeRate-API](https://www.exchangerate-api.com/).
+
+- `JSON`:
+  > Manipulação de dados no formato JSON para tratar as respostas da API de forma eficiente.
 
 - `Gson`:
   > Biblioteca utilizada para manipulação de JSON na interação com a API de taxas de câmbio.
 
-- `API de Taxas de Câmbio`:
-  > API usada para obter as taxas de câmbio mais recentes e realizar as conversões.
+- `Maven`:
+  > Utilizado como gerenciador de dependências e automação de compilação, facilitando a gestão do projeto.
+
+- `Maven Compiler Plugin:`:
+  > Plugin de compilação utilizado para configurar o processo de compilação, definindo o Java 17 e a codificação UTF-8.
+
+- `Maven Shade Plugin:`:
+  > Plugin usado para empacotar o projeto em um fat JAR, facilitando a execução em diferentes ambientes sem a necessidade de gerenciar manualmente as dependências.
 
 ## :books: Pré-requisitos
 
